@@ -49,9 +49,7 @@ class PokeMaster69:
     def highlight_element(self, element, color='yellow'):
         bot = self.bot
         original_style = element.get_attribute('style')
-        # Set the new style with the specified color
         new_style = f"border: 2px solid {color}; background-color: yellow; {original_style}"
-        # Apply the new style to the element
         bot.execute_script("arguments[0].setAttribute('style', arguments[1]);", element, new_style)
 
     def login(self):
