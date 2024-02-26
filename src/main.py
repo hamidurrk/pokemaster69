@@ -40,8 +40,8 @@ class PokeMaster69:
             self.bot = webdriver.Firefox(executable_path=GeckoDriverManager().install(), service_args = ['--marionette-port', '2828', '--connect-existing'], options=firefox_options)
         else:
             self.bot = webdriver.Firefox(executable_path=GeckoDriverManager().install())
-        self.bot.set_window_position(0, 0) 
-        self.bot.set_window_size(960, 1043)
+        # self.bot.set_window_position(0, 0) 
+        # self.bot.set_window_size(960, 1043)
         sys.stdout.flush()
         gen_prompt("PokeMaster69 initialized", char="#")
         print("\n")
@@ -110,6 +110,7 @@ class PokeMaster69:
                 pokes = f"/html/body/div[1]/div/div[1]/div/div[3]/div/div/div[1]/div[1]/div[2]/div[2]/div[{i}]/div/div/div[1]/div[2]/div[2]/div/div/div"
                 try:
                     element = bot.find_element_by_xpath(pokes)
+                    new_poke_count += 1
                     self.highlight_element(element)
                     check_further = bot.find_element_by_xpath(f"/html/body/div[1]/div/div[1]/div/div[3]/div/div/div[1]/div[1]/div[2]/div[2]/div[{i+5}]/div/div/div[1]/div[2]/div[2]/div/div/div")
                     
@@ -119,7 +120,7 @@ class PokeMaster69:
                         bot.execute_script("window.scrollBy(0, 1000);")
                         time.sleep(0.5)
 
-                    new_poke_count += 1
+                    
                 except Exception as e:
                     # print("Poke box error:", e)
                     bot.execute_script("window.scrollBy(0, 1000);")
@@ -127,7 +128,7 @@ class PokeMaster69:
                     continue
                 # time.sleep(random.randint(5, 15))
                 time.sleep(0.1)
-            print(f"\nSuccessfully Poked {poke_count} New People")
+            print(f"\nSuccessfully Poked {new_poke_count} New People")
             bot.get('https://www.facebook.com/pokes/')
             gen_prompt("Reloading " + self.username + "'s Pokes", char="#")
             wait(4)
