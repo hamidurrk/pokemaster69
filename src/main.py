@@ -96,6 +96,7 @@ class PokeMaster69:
                 pokes = f"/html/body/div[1]/div/div[1]/div/div[3]/div/div/div[1]/div[1]/div[2]/div[1]/div[{i}]/div/div/div[1]/div[2]/div[2]/div/div/div"
                 try:
                     element = bot.find_element_by_xpath(pokes)
+                    # bot.element.click()
                     self.highlight_element(element)
                     poke_count += 1
                 except Exception as e:
@@ -111,6 +112,7 @@ class PokeMaster69:
                 try:
                     element = bot.find_element_by_xpath(pokes)
                     new_poke_count += 1
+                    # bot.element.click()
                     self.highlight_element(element)
                     check_further = bot.find_element_by_xpath(f"/html/body/div[1]/div/div[1]/div/div[3]/div/div/div[1]/div[1]/div[2]/div[2]/div[{i+5}]/div/div/div[1]/div[2]/div[2]/div/div/div")
                     
